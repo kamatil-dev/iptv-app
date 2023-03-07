@@ -41,19 +41,8 @@ onMounted(() => {
   hls.loadSource(PLAYLIST.value[0].source);
   hls.attachMedia(VIDEO);
   hls.on(Hls.Events.MANIFEST_PARSED, () => {
-    const promise = VIDEO.play();
-    if (promise !== undefined) {
-      promise
-        .then(() => {
-          // Autoplay started
-        })
-        .catch((error) => {
-          // Autoplay was prevented.
-          VIDEO.muted = true;
-          VIDEO.play();
-          // VIDEO.muted = false;
-        });
-    }
+    // VIDEO.muted = true;
+    VIDEO.play();
 
     var timeout: NodeJS.Timeout;
     var duration = 3000;
@@ -137,7 +126,12 @@ onMounted(() => {
 
 <template>
   <div class="video-player">
-    <video id="player" controls controlsList="nofullscreen nodownload"></video>
+    <video
+      id="player"
+      controls
+      autoplay
+      controlsList="nofullscreen nodownload"
+    ></video>
     <div id="controls">
       <button id="list_up">
         <svg
