@@ -3,10 +3,11 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
-    "generate": "nuxt generate && cp -R .output/public/* docs/",
+    "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "deploy": "gh-pages --dotfiles -d .output/public"
+    "deploy": "nuxt generate && cp -R .output/public/* docs/",
+    "deployold": "gh-pages --dotfiles -d .output/public"
   },
   "devDependencies": {
     "gh-pages": "^5.0.0",
