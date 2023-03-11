@@ -1,3 +1,4 @@
+kiosk_config=https://iptv.kamatil.com/config.txt
 connection=wifi
 dhcp=yes
 wifi_encryption=wpa
