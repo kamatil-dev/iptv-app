@@ -51,6 +51,9 @@ onMounted(() => {
         "flex";
       (document.getElementById("playlist") as HTMLInputElement).style.display =
         "grid";
+      (
+        document.getElementById("video-player") as HTMLInputElement
+      ).style.cursor = "auto";
       clearTimeout(timeout);
       timeout = setTimeout(() => {
         (
@@ -59,6 +62,9 @@ onMounted(() => {
         (
           document.getElementById("playlist") as HTMLInputElement
         ).style.display = "none";
+        (
+          document.getElementById("video-player") as HTMLInputElement
+        ).style.cursor = "none";
       }, duration);
     });
   });
@@ -125,7 +131,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="video-player">
+  <div id="video-player">
     <video
       id="player"
       controls
@@ -277,7 +283,8 @@ body {
   object-fit: fill;
 }
 
-.video-player {
+#video-player {
+  cursor: none;
   position: relative;
   height: 100vh;
 }
@@ -293,7 +300,7 @@ body {
   transition: 0.5s;
   margin: 0;
   padding: 1rem;
-  display: grid;
+  display: none;
   grid-template-columns: repeat(6, 1fr);
   grid-gap: 1rem;
 }
@@ -344,7 +351,7 @@ body {
 
 #controls {
   z-index: 100;
-  display: flex;
+  display: none;
   flex-direction: column;
   position: fixed;
   top: 15px;
