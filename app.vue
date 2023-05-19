@@ -291,7 +291,7 @@ body {
 
 #playlist {
   position: absolute;
-  top: 0;
+  bottom: 15px;
   left: 0;
   width: 100%;
   height: 120px;
