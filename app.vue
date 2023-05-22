@@ -139,7 +139,7 @@ onMounted(() => {
       controlsList="nofullscreen nodownload"
     ></video>
     <div id="controls">
-      <button id="list_up">
+      <button id="list_up" style="display:none">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           shape-rendering="geometricPrecision"
@@ -155,7 +155,7 @@ onMounted(() => {
           />
         </svg>
       </button>
-      <button id="list_down">
+      <button id="list_down" style="display:none">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           shape-rendering="geometricPrecision"
@@ -291,7 +291,7 @@ body {
 
 #playlist {
   position: absolute;
-  bottom: 35px;
+  bottom: 40px;
   left: 0;
   width: 100%;
   height: 120px;
