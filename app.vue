@@ -3,8 +3,9 @@ import Hls from "hls.js/dist/hls.min";
 const { data: PLAYLIST } = await useFetch(
   'https://api.inicontent.com/iptv/playlist?_options[order_by]=["created_at","ASC"]&_options[per_page]=100&_options[columns]=["name","poster","source"]',
   { transform: (res: any) => res.result }
-);
-const currentChannel = ref(0);
+),
+currentSliderScrollPos = ref(0),
+currentChannel = ref(0);
 
 const ChangeChannel = (index: number) => {
   const hls = new Hls();
@@ -84,7 +85,6 @@ onMounted(() => {
   });
 
   var sliderElement = document.getElementById("playlist"),
-    currentSliderScrollPos = 0,
     slideWidth = 120,
     slideMaxWidth = (document.getElementById("playlist") as HTMLInputElement)
       .clientHeight;
@@ -92,9 +92,9 @@ onMounted(() => {
   (document.getElementById("list_up") as HTMLInputElement).addEventListener(
     "click",
     () => {
-      var newSliderScrollPos = currentSliderScrollPos - slideWidth;
+      var newSliderScrollPos = currentSliderScrollPos.value - slideWidth;
       if (newSliderScrollPos < 0) return;
-      currentSliderScrollPos = newSliderScrollPos;
+      currentSliderScrollPos.value = newSliderScrollPos;
       sliderElement?.scrollTo({ top: newSliderScrollPos, behavior: "smooth" });
     }
   );
@@ -102,9 +102,9 @@ onMounted(() => {
   (document.getElementById("list_down") as HTMLInputElement).addEventListener(
     "click",
     () => {
-      var newSliderScrollPos = currentSliderScrollPos + slideWidth;
+      var newSliderScrollPos = currentSliderScrollPos.value + slideWidth;
       if (newSliderScrollPos >= slideMaxWidth) return;
-      currentSliderScrollPos = newSliderScrollPos;
+      currentSliderScrollPos.value = newSliderScrollPos;
       sliderElement?.scrollTo({ top: newSliderScrollPos, behavior: "smooth" });
     }
   );
@@ -291,7 +291,7 @@ body {
 
 #playlist {
   position: absolute;
-  bottom: 15px;
+  bottom: 35px;
   left: 0;
   width: 100%;
   height: 120px;
