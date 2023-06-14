@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import Hls from "hls.js/dist/hls.min";
 const { data: PLAYLIST } = await useFetch(
-  'https://api.inicontent.com/iptv/playlist?_options[order_by]=["created_at","ASC"]&_options[per_page]=100&_options[columns]=["name","poster","source"]',
-  { transform: (res: any) => res.result }
-);
-const currentChannel = ref(0);
+    'https://api.inicontent.com/iptv/playlist?_options[order_by]=["created_at","ASC"]&_options[per_page]=100&_options[columns]=["name","poster","source"]',
+    { transform: (res: any) => res.result }
+  ),
+  currentSliderScrollPos = ref(0),
+  currentChannel = ref(0);
 
 const ChangeChannel = (index: number) => {
   const hls = new Hls();
@@ -84,7 +85,6 @@ onMounted(() => {
   });
 
   var sliderElement = document.getElementById("playlist"),
-    currentSliderScrollPos = 0,
     slideWidth = 120,
     slideMaxWidth = (document.getElementById("playlist") as HTMLInputElement)
       .clientHeight;
@@ -92,9 +92,9 @@ onMounted(() => {
   (document.getElementById("list_up") as HTMLInputElement).addEventListener(
     "click",
     () => {
-      var newSliderScrollPos = currentSliderScrollPos - slideWidth;
+      var newSliderScrollPos = currentSliderScrollPos.value - slideWidth;
       if (newSliderScrollPos < 0) return;
-      currentSliderScrollPos = newSliderScrollPos;
+      currentSliderScrollPos.value = newSliderScrollPos;
       sliderElement?.scrollTo({ top: newSliderScrollPos, behavior: "smooth" });
     }
   );
@@ -102,9 +102,9 @@ onMounted(() => {
   (document.getElementById("list_down") as HTMLInputElement).addEventListener(
     "click",
     () => {
-      var newSliderScrollPos = currentSliderScrollPos + slideWidth;
+      var newSliderScrollPos = currentSliderScrollPos.value + slideWidth;
       if (newSliderScrollPos >= slideMaxWidth) return;
-      currentSliderScrollPos = newSliderScrollPos;
+      currentSliderScrollPos.value = newSliderScrollPos;
       sliderElement?.scrollTo({ top: newSliderScrollPos, behavior: "smooth" });
     }
   );
@@ -139,7 +139,7 @@ onMounted(() => {
       controlsList="nofullscreen nodownload"
     ></video>
     <div id="controls">
-      <!-- <button id="list_up">
+      <button id="list_up" style="display: none">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           shape-rendering="geometricPrecision"
@@ -155,7 +155,7 @@ onMounted(() => {
           />
         </svg>
       </button>
-      <button id="list_down">
+      <button id="list_down" style="display: none">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           shape-rendering="geometricPrecision"
@@ -170,7 +170,7 @@ onMounted(() => {
             d="M410.1 0 256 144.66 101.9 0 0 106.04l256 240.31 256-240.31z"
           />
         </svg>
-      </button> -->
+      </button>
       <button id="sound_up">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -297,7 +297,7 @@ body {
 
 #playlist {
   position: absolute;
-  top: 0;
+  bottom: 40px;
   left: 0;
   width: 100%;
   height: 120px;
