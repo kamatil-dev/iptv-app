@@ -4,13 +4,13 @@ dhcp=yes
 wifi_encryption=wpa
 wpa_password=mkhfm2001
 ssid_name=D-Link
+run_command=grep -q "autoplay-policy" $chflags || echo '--autoplay-policy=no-user-gesture-required' >> $chflags
 browser=chrome
-browser_preferences=https://chromeenterprise.google/policies
 browser_preferences="DeveloperToolsDisabled": false,
 browser_preferences="DefaultGeolocationSetting": 2,
 browser_preferences="ExtensionInstallWhitelist": true,
 browser_preferences="ExtensionInstallForcelist": true,
-disable_navigation_bar=yes
+disable_navigation_bar=no
 disable_firewall=yes
 virtual_keyboard=yes
 homepage=https://iptv.kamatil.com
