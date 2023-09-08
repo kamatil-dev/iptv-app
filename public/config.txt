@@ -10,6 +10,7 @@ browser_preferences="DeveloperToolsDisabled": false,
 browser_preferences="DefaultGeolocationSetting": 2,
 disable_navigation_bar=no
 disable_private_mode=yes
+wallpaper=https://wallpapers.com/images/hd/nature-landscape-hd-usqznq19dscdjkf8.jpg
 disable_firewall=yes
 virtual_keyboard=yes
 homepage=https://iptv.kamatil.com
