@@ -4,15 +4,16 @@ dhcp=yes
 wifi_encryption=wpa
 wpa_password=mkhfm2001
 ssid_name=D-Link
-run_command=grep -q "autoplay-policy" $chflags || echo '--autoplay-policy=no-user-gesture-required' >> $chflags && sed -i '/ExtensionInstallBlacklist/d' $json
+run_command=grep -q "autoplay-policy" $chflags || echo '--autoplay-policy=no-user-gesture-required' >> $chflags
 browser=chrome
 browser_preferences="DeveloperToolsDisabled": false,
 browser_preferences="DefaultGeolocationSetting": 2,
-disable_navigation_bar=no
-disable_private_mode=yes
-wallpaper=https://wallpapers.com/images/hd/nature-landscape-hd-usqznq19dscdjkf8.jpg
+browser_preferences="ExtensionInstallWhitelist": true,
+browser_preferences="ExtensionInstallForcelist": true,
+disable_navigation_bar=yes
+disable_private_mode=no
 disable_firewall=yes
-virtual_keyboard=yes
+virtual_keyboard=no
 homepage=https://iptv.kamatil.com
 hardware_video_decode=yes
 primary_keyboard_layout=fr
