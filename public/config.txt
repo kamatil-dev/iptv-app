@@ -5,6 +5,7 @@ wifi_encryption=wpa
 wpa_password=mkhfm2001
 ssid_name=D-Link
 run_command=sed -i '/ExtensionInstallBlacklist/d' $json && grep -q "autoplay-policy" $chflags || echo '--autoplay-policy=no-user-gesture-required' >> $chflags
+persistence=full
 browser=chrome
 disable_navigation_bar=yes
 disable_private_mode=yes
