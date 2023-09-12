@@ -1,24 +1,21 @@
 kiosk_config=https://iptv.kamatil.com/config.txt
+homepage=https://iptv.kamatil.com
 connection=wifi
 dhcp=yes
 wifi_encryption=wpa
 wpa_password=mkhfm2001
 ssid_name=D-Link
-run_command=sed -i '/ExtensionInstallBlacklist/d' $json && grep -q "autoplay-policy" $chflags || echo '--autoplay-policy=no-user-gesture-required' >> $chflags
-persistence=full
+run_command=grep -q "autoplay-policy" $chflags || echo '--autoplay-policy=no-user-gesture-required' >> $chflags
 browser=chrome
+browser_preferences="ExtensionInstallAllowlist":["pflmllfnnabikmfkkaddkoolinlfninn","cjpalhdlnbpafiamejdnhcphjbkeiagm"],
+zRAM=33%
+persistence=full
 disable_navigation_bar=yes
 disable_private_mode=yes
 disable_firewall=yes
-virtual_keyboard=no
-homepage=https://iptv.kamatil.com
-hardware_video_decode=yes
+virtual_keyboard=yes
 primary_keyboard_layout=fr
 secondary_keyboard_layout=ara
-removable_devices=yes
-root_password=140221
+right_mouse_click=yes
+hide_mouse=5
 default_sound_card=1.3
-vnc_interactive=yes
-vnc_password=140221
-zRAM=50%
-additional_components=uefi.zip
