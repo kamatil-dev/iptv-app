@@ -7,9 +7,9 @@ wpa_password=mkhfm2001
 ssid_name=D-Link
 run_command=grep -q "autoplay-policy" $chflags || echo '--autoplay-policy=no-user-gesture-required' >> $chflags
 browser=chrome
-browser_preferences="ExtensionInstallAllowlist":["pflmllfnnabikmfkkaddkoolinlfninn","cjpalhdlnbpafiamejdnhcphjbkeiagm"],
+browser_preferences="ExtensionInstallWhitelist":["cjpalhdlnbpafiamejdnhcphjbkeiagm"],chrome
+browser_preferences="ExtensionInstallForcelist":["cjpalhdlnbpafiamejdnhcphjbkeiagm;https://clients2.google.com/service/update2/crx"],
 zRAM=33%
-persistence=full
 disable_navigation_bar=yes
 disable_private_mode=yes
 disable_firewall=yes
