@@ -22,16 +22,14 @@ onMounted(() => {
   const VIDEO = <HTMLMediaElement>document.getElementById("player");
     function toggleFullscreen() {
      if (!document.webkitFullscreenElement) {
-      if (video.requestFullScreen) {
-       player.requestFullScreen();
-      } else if (video.webkitRequestFullScreen) {
-       player.webkitRequestFullScreen();
-      } else if (video.mozRequestFullScreen) {
-       player.mozRequestFullScreen();
-      }
-     } else {
+      if (VIDEO.requestFullScreen)
+       VIDEO.requestFullScreen();
+      else if (VIDEO.webkitRequestFullScreen)
+       VIDEO.webkitRequestFullScreen();
+      else if (VIDEO.mozRequestFullScreen)
+       VIDEO.mozRequestFullScreen();
+     } else
       document.webkitExitFullscreen();
-     }
     }
 
   VIDEO.addEventListener("dblclick", toggleFullscreen);
