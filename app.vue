@@ -19,20 +19,21 @@ const ChangeChannel = (index: number) => {
 
 onMounted(() => {
   const hls = new Hls();
-  const VIDEO = <HTMLMediaElement>document.getElementById("player");
+  const VIDEO = <HTMLMediaElement>document.getElementById("player"),
+      VIDEO_CONTAINER = <HTMLInputElement>document.getElementById("video-player");
     function toggleFullscreen() {
      if (!document.webkitFullscreenElement) {
-      if (VIDEO.requestFullScreen)
-       VIDEO.requestFullScreen();
-      else if (VIDEO.webkitRequestFullScreen)
-       VIDEO.webkitRequestFullScreen();
-      else if (VIDEO.mozRequestFullScreen)
-       VIDEO.mozRequestFullScreen();
+      if (VIDEO_CONTAINER.requestFullScreen)
+       VIDEO_CONTAINER.requestFullScreen();
+      else if (VIDEO_CONTAINER.webkitRequestFullScreen)
+       VIDEO_CONTAINER.webkitRequestFullScreen();
+      else if (VIDEO_CONTAINER.mozRequestFullScreen)
+       VIDEO_CONTAINER.mozRequestFullScreen();
      } else
       document.webkitExitFullscreen();
     }
 
-  VIDEO.addEventListener("dblclick", toggleFullscreen);
+  VIDEO_CONTAINER.addEventListener("dblclick", toggleFullscreen);
 
   (document.getElementById("sound_up") as HTMLInputElement).addEventListener(
     "click",
@@ -66,9 +67,7 @@ onMounted(() => {
         "flex";
       (document.getElementById("playlist") as HTMLInputElement).style.display =
         "grid";
-      (
-        document.getElementById("video-player") as HTMLInputElement
-      ).style.cursor = "auto";
+      VIDEO_CONTAINER.style.cursor = "auto";
       clearTimeout(timeout);
       timeout = setTimeout(() => {
         (
@@ -77,9 +76,7 @@ onMounted(() => {
         (
           document.getElementById("playlist") as HTMLInputElement
         ).style.display = "none";
-        (
-          document.getElementById("video-player") as HTMLInputElement
-        ).style.cursor = "none";
+        VIDEO_CONTAINER.style.cursor = "none";
       }, duration);
     });
   });
