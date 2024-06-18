@@ -1,0 +1,13 @@
+{
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "referrer",
+          "value": "https://snrtlive.ma/"
+        }
+      ]
+    }
+  ]
+}
