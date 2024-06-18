@@ -4,7 +4,11 @@ import Hls from "hls.js";
 export default defineNuxtComponent({
 	async setup() {
 		onMounted(() => {
-			const hls = new Hls();
+			const hls = new Hls({
+				xhrSetup: function (xhr, url) {
+					xhr.setRequestHeader('Referer', 'https://snrtlive.ma/');
+				}
+			});
 			const VIDEO = <HTMLMediaElement>document.getElementById("player");
 			const VIDEO_CONTAINER = <HTMLInputElement>(
 				document.getElementById("video-player")
@@ -102,7 +106,11 @@ export default defineNuxtComponent({
 
 		const ChangeChannel = (index: number) => {
 			if (!PLAYLIST.value) return;
-			const hls = new Hls();
+			const hls = new Hls({
+				xhrSetup: function (xhr, url) {
+					xhr.setRequestHeader('Referer', 'https://snrtlive.ma/');
+				}
+			});
 			const VIDEO = <HTMLMediaElement>document.getElementById("player");
 			currentChannel.value = index;
 			VIDEO.setAttribute("poster", PLAYLIST.value[index].poster);
