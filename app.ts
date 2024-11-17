@@ -21,7 +21,7 @@ export default defineNuxtComponent({
 			VIDEO_CONTAINER.addEventListener("dblclick", toggleFullscreen);
 
 			if (!PLAYLIST.value) return;
-			VIDEO.setAttribute("poster", PLAYLIST.value[0].poster);
+			VIDEO.setAttribute("poster", PLAYLIST.value[0].poster.publicURL);
 			hls.loadSource(PLAYLIST.value[0].source);
 			hls.attachMedia(VIDEO);
 			hls.on(Hls.Events.MANIFEST_PARSED, () => {
@@ -95,7 +95,7 @@ export default defineNuxtComponent({
 			'https://api.inicontent.com/IPTV/playlist',
 			{
 				transform: (res: {
-					result: { poster: string; name: string; source: string }[];
+					result: { poster: any; name: string; source: string }[];
 				}) => res.result,
 			},
 		);
@@ -154,7 +154,7 @@ export default defineNuxtComponent({
 							{
 								class: `item${currentChannel.value === index ? " active" : ""}`,
 								style: {
-									backgroundImage: `url(${poster})`,
+									backgroundImage: `url(${poster.publicURL})`,
 								},
 								onClick: () => ChangeChannel(index),
 							},
