@@ -92,7 +92,7 @@ export default defineNuxtComponent({
 		});
 
 		const { data: PLAYLIST } = await useFetch(
-			'https://api.inicontent.com/iptv/playlist?_options[order_by]=["created_at","ASC"]&_options[per_page]=100&_options[columns]=["name","poster","source"]',
+			'https://api.inicontent.com/IPTV/playlist',
 			{
 				transform: (res: {
 					result: { poster: string; name: string; source: string }[];
@@ -128,7 +128,15 @@ export default defineNuxtComponent({
 					h(
 						NuxtLink,
 						{
-							to: "https://youtube.com/results?search_query=%D8%A3%D9%81%D9%84%D8%A7%D9%85+%D9%85%D8%BA%D8%B1%D8%A8%D9%8A%D8%A9",
+							to: "https://youtube.com/results?search_query=أفلام+مغربية",
+							external: true,
+						},
+						() => h(IconsYoutube),
+					),
+					h(
+						NuxtLink,
+						{
+							to: "https://youtube.com/results?search_query=documentaire+maroc",
 							external: true,
 						},
 						() => h(IconsYoutube),
