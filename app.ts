@@ -1,4 +1,4 @@
-import { NuxtLink, IconsGoogle, IconsSport, IconsYoutube } from "#components";
+import { NuxtLink, IconsGoogle, IconsSport, IconsYoutube, IconsMovie } from "#components";
 import Hls from "hls.js";
 
 export default defineNuxtComponent({
