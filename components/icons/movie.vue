@@ -1,5 +1,5 @@
 <template>
-	<svg fill="#ff9800" height="800px" width="800px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+	<svg fill="#ff9800" version="1.1" xmlns="http://www.w3.org/2000/svg"
 		xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 210.233 210.233" xml:space="preserve">
 		<g>
 			<g>
