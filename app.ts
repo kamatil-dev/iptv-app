@@ -131,12 +131,12 @@ export default defineNuxtComponent({
 							to: "https://youtube.com/results?search_query=أفلام+مغربية",
 							external: true,
 						},
-						() => h(IconsYoutube),
+						() => h(IconsMovie),
 					),
 					h(
 						NuxtLink,
 						{
-							to: "https://youtube.com/results?search_query=documentaire+maroc",
+							to: "https://youtube.com/results?search_query=وثائقي",
 							external: true,
 						},
 						() => h(IconsYoutube),
