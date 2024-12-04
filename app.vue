@@ -35,6 +35,16 @@ const { data: PLAYLIST } = await useFetch(
 	},
 );
 
+function ChangeChannel(index) {
+	if (!PLAYLIST.value) return;
+	const VIDEO = document.getElementById("player");
+	currentChannel.value = index;
+	VIDEO.setAttribute("poster", PLAYLIST.value[index].poster.publicURL);
+	hls.loadSource(PLAYLIST.value[index].source);
+	hls.attachMedia(VIDEO);
+	hls.on(Hls.Events.MANIFEST_PARSED, () => VIDEO.play());
+}
+
 onMounted(() => {
 	Object.defineProperty(document, "referrer", {
 		get: () => "https://snrtlive.ma/",
@@ -95,16 +105,6 @@ onMounted(() => {
 	});
 
 	VIDEO.addEventListener("wheel", throttle(100));
-
-	function ChangeChannel(index) {
-		if (!PLAYLIST.value) return;
-		const VIDEO = document.getElementById("player");
-		currentChannel.value = index;
-		VIDEO.setAttribute("poster", PLAYLIST.value[index].poster.publicURL);
-		hls.loadSource(PLAYLIST.value[index].source);
-		hls.attachMedia(VIDEO);
-		hls.on(Hls.Events.MANIFEST_PARSED, () => VIDEO.play());
-	}
 
 	function throttle(wait) {
 		let time = Date.now();
