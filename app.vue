@@ -35,6 +35,8 @@ const { data: PLAYLIST } = await useFetch(
 	},
 );
 
+let hls;
+
 function ChangeChannel(index) {
 	if (!PLAYLIST.value) return;
 	const VIDEO = document.getElementById("player");
@@ -50,7 +52,7 @@ onMounted(() => {
 		get: () => "https://snrtlive.ma/",
 	});
 
-	const hls = new Hls();
+	hls = new Hls();
 	const VIDEO = document.getElementById("player");
 	const VIDEO_CONTAINER = document.getElementById("video-player");
 
