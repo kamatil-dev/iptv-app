@@ -4,5 +4,6 @@ export default defineNuxtConfig({
 	experimental: {
 		payloadExtraction: false,
 	},
-	compatibilityDate: "2024-11-28",
+	css: ["@/public/main.css"],
+	devtools: { enabled: false },
 });
