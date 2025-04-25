@@ -11,9 +11,6 @@
 			<NuxtLink to="https://youtube.com/results?search_query=وثائقي" external>
 				<IconsYoutube />
 			</NuxtLink>
-			<NuxtLink to="https://yacine-app.tv" external>
-				<IconsSport />
-			</NuxtLink>
 		</div>
 		<div id="playlist">
 			<div v-for="(item, index) in PLAYLIST" :key="index"
