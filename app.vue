@@ -35,7 +35,7 @@ const { data: PLAYLIST } = await useFetch(
 	},
 );
 
-let hls;
+let hls
 
 function ChangeChannel(index) {
 	if (!PLAYLIST.value) return;
@@ -48,7 +48,7 @@ function ChangeChannel(index) {
 }
 
 onMounted(() => {
-	const hls = new Hls();
+	hls = new Hls();
 	const VIDEO = document.getElementById("player");
 	const VIDEO_CONTAINER = document.getElementById("video-player");
 
