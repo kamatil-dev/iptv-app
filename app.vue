@@ -49,6 +49,10 @@ function ChangeChannel(index) {
 
 onMounted(() => {
 	hls = new Hls();
+	let lastTime = 0;
+	let stallSecs = 0;
+	const THRESHOLD = 3; // seconds before we consider it “stalled”
+
 	const VIDEO = document.getElementById("player");
 	const VIDEO_CONTAINER = document.getElementById("video-player");
 
@@ -67,6 +71,7 @@ onMounted(() => {
 	VIDEO.setAttribute("poster", PLAYLIST.value[0].poster.publicURL);
 	hls.loadSource(PLAYLIST.value[0].source);
 	hls.attachMedia(VIDEO);
+
 	hls.on(Hls.Events.MANIFEST_PARSED, () => {
 		VIDEO.play();
 
@@ -102,9 +107,8 @@ onMounted(() => {
 		}
 	});
 
-	VIDEO.addEventListener("wheel", throttle(100));
-
-	function throttle(wait) {
+	VIDEO.addEventListener("wheel", () => {
+		let wait = 100;
 		let time = Date.now();
 
 		return (event) => {
@@ -118,7 +122,27 @@ onMounted(() => {
 				time = Date.now();
 			}
 		};
-	}
+	})
+
+	// every second, check if we're still moving forward
+	setInterval(() => {
+		if (!VIDEO.paused && !VIDEO.seeking) {
+			if (VIDEO.currentTime === lastTime) {
+				stallSecs++;
+				if (stallSecs >= THRESHOLD) {
+					console.warn(`Playback stalled for ≥${THRESHOLD}s → restarting load`);
+					hls.stopLoad();
+					hls.startLoad();
+					stallSecs = 0;        // reset counter
+				}
+			} else {
+				// playback progressed → reset
+				stallSecs = 0;
+				lastTime = VIDEO.currentTime;
+			}
+		}
+	}, 1000);
+
 });
 
 const currentChannel = ref(0);
