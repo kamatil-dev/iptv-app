@@ -11,6 +11,6 @@
 		"vue": "latest",
 		"vue-router": "latest",
 		"nuxt": "latest",
-		"hls.js": "latest"
+		"hls.js": "1.6.12"
 	}
 }
