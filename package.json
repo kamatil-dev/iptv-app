@@ -10,7 +10,7 @@
 	"dependencies": {
 		"vue": "latest",
 		"vue-router": "latest",
-		"nuxt": "latest",
+		"nuxt": "3.19.0",
 		"hls.js": "latest"
 	}
 }
