@@ -10,7 +10,7 @@
   "dependencies": {
     "hls.js": "latest",
     "node-fetch": "^3.3.2",
-    "nuxt": "latest",
+    "nuxt": "3.20.1",
     "vue": "latest",
     "vue-router": "latest"
   }
